@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Job Applications</title>
+</head>
+<body>
+
+<h2>Job Applications</h2>
+
+<table border="1">
+    <tr>
+        <th>Applicant Name</th>
+        <th>Email</th>
+    </tr>
+
+    <tr th:each="app : ${applications}">
+        <td th:text="${app.user.name}"></td>
+        <td th:text="${app.user.email}"></td>
+    </tr>
+
+</table>
+
+<br>
+<a href="/admin/dashboard">Back</a>
+
+</body>
+</html>

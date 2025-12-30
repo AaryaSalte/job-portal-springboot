@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
+    <div class="container">
+
+        <!-- BRAND -->
+        <a class="navbar-brand"
+           th:href="@{/}">
+            JobPortal
+        </a>
+
+        <!-- TOGGLER (IMPORTANT for mobile) -->
+        <button class="navbar-toggler" type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarContent">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarContent">
+
+            <!-- LEFT MENU -->
+            <ul class="navbar-nav me-auto">
+
+                <!-- USER -->
+                <li class="nav-item" sec:authorize="hasRole('USER')">
+                    <a class="nav-link"
+                       th:href="@{/jobs}">
+                        Jobs
+                    </a>
+                </li>
+
+                <!-- RECRUITER -->
+                <li class="nav-item" sec:authorize="hasRole('RECRUITER')">
+                    <a class="nav-link"
+                       th:href="@{/recruiter/dashboard}">
+                        Recruiter Dashboard
+                    </a>
+                </li>
+
+                <li class="nav-item" sec:authorize="hasRole('RECRUITER')">
+                    <a class="nav-link"
+                       th:href="@{/recruiter/jobs}">
+                        My Jobs
+                    </a>
+                </li>
+
+                <li class="nav-item" sec:authorize="hasRole('RECRUITER')">
+                    <a class="nav-link"
+                       th:href="@{/recruiter/applications}">
+                        Applications
+                    </a>
+                </li>
+
+                <!-- ADMIN -->
+                <li class="nav-item" sec:authorize="hasRole('ADMIN')">
+                    <a class="nav-link"
+                       th:href="@{/admin/dashboard}">
+                        Admin Dashboard
+                    </a>
+                </li>
+
+                <li class="nav-item" sec:authorize="hasRole('ADMIN')">
+                    <a class="nav-link"
+                       th:href="@{/admin/users}">
+                        All Users
+                    </a>
+                </li>
+
+                <li class="nav-item" sec:authorize="hasRole('ADMIN')">
+                    <a class="nav-link"
+                       th:href="@{/admin/jobs}">
+                        All Jobs
+                    </a>
+                </li>
+
+            </ul>
+
+            <!-- RIGHT MENU -->
+            <ul class="navbar-nav align-items-center">
+
+                <!-- LOGGED-IN USER NAME -->
+                <li class="nav-item me-3 text-white"
+                    sec:authorize="isAuthenticated()">
+                    <span sec:authentication="name"></span>
+                </li>
+
+                <!-- LOGOUT -->
+                <li class="nav-item" sec:authorize="isAuthenticated()">
+                    <form th:action="@{/logout}" method="post">
+                        <button type="submit"
+                                class="btn btn-outline-light btn-sm">
+                            Logout
+                        </button>
+                    </form>
+                </li>
+
+            </ul>
+
+        </div>
+    </div>
+</nav>
+
+</body>
+</html>
