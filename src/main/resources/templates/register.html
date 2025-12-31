@@ -16,6 +16,7 @@
     <div class="card shadow p-4 mx-auto" style="max-width: 500px;">
         <h3 class="text-center mb-4">User Registration</h3>
 
+        <!-- REGISTRATION FORM -->
         <form th:action="@{/register}" th:object="${user}" method="post">
 
             <div class="mb-3">
@@ -37,6 +38,17 @@
                 Register
             </button>
         </form>
+
+        <!-- LOGIN PROMPT -->
+        <hr>
+
+        <p class="text-center mb-2">
+            Already have an account?
+        </p>
+
+        <a href="/login" class="btn btn-outline-secondary w-100">
+            Login here
+        </a>
     </div>
 </div>
 

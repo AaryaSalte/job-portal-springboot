@@ -42,4 +42,9 @@ public class JobApplicationService {
         return repository.findByJobRecruiter(recruiter);
     }
 
+    public List<JobApplication> getApplicationsForUser(User user) {
+        return repository.findByUser(user);
+    }
+
+
 }
